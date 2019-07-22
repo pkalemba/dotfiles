@@ -1,0 +1,16 @@
+
+Plug 'morhetz/gruvbox'
+Plug 'stephpy/vim-yaml', {'for': 'yaml'}
+Plug 'ervandew/supertab'
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'benekastah/neomake'
+Plug 'tpope/vim-fugitive'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'simnalamburt/vim-mundo',{'on': 'GundoToggle'}
+Plug 'fatih/vim-go', {'for': 'go'}

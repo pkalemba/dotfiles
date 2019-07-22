@@ -1,0 +1,48 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+
+- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+
+- shell:
+  - [bash scripts/pre-install.sh, Running pre installation script]
+  - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
+  - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+
+
+- link:
+    ~/.oh-my-zsh/custom/plugins/zsh-completions: oh-my-zsh/custom/plugins/zsh-completions/
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme: oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme
+    ~/.gitconfig: gitconfig
+    ~/.gitmessage: gitmessage
+    ~/.gitignore: gitignore
+    ~/.zshrc:
+      force: true
+      path: zshrc
+    ~/.tmux.conf:
+      force: true
+      path: tmux
+    ~/.config/kitty/kitty.conf:
+      force: true
+      path: kitty
+    ~/.config/nvim/init.vim:
+      force: true
+      path: nvim
+    ~/.nvim.plugins:
+      force: true
+      path: nvim.plugins
+
+- shell:
+  - [sh fonts/install.sh, Installing Powerline fonts]
+  - [git submodule update --init --recursive, Installing submodules]
+  - [sh scripts/kitty.sh launch=n ]
+  - ["wget https://github.com/Shougo/deoplete.nvim/tarball/master -O - | tar xz  -C ~/.config/nvim --strip-components=1", Cloning Deoplete]
+  - ["curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim","Installing VimPlug"]
+  - [pip3 install neovim --user ,Installig neovim Python3 Plugin]
+  - [nvim +UpdateRemotePlugins +qall,Installing Deoplete]
+  - [nvim +PlugInstall +qall,Installing Deoplete]
+
