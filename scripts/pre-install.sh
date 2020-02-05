@@ -7,34 +7,29 @@ get_latest_release() {
 }
 YUM_CMD=$(which yum)
 APT_GET_CMD=$(which apt)
+BREW_CMD=$(which brew)
 if [[ ! -z $YUM_CMD ]]; then
     sudo yum install zsh tmux curl
 elif [[ ! -z $APT_GET_CMD ]]; then
-    sudo apt install zsh tmux curl wget python3 python3-pip  -y
+    sudo apt-get update
+    sudo apt-get install zsh tmux curl wget python3 python3-pip  -y
 else
     echo "error can't install package zsh"
     exit 1;
  fi
 
-if [ "$(uname)" == "Darwin" ]; then
-	# Check if Homebrew is installed
-	if [ ! -f "`which brew`" ]; then
-	  echo 'Installing homebrew'
-	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	else
-	  echo 'Updating homebrew'
-	  brew update
-	fi
-	brew tap homebrew/bundle  # Install Homebrew Bundle
-	# Check if Mac-CLI is installed
-	if [ ! -f "which mac" ]; then
-	    echo 'Installing Mac-CLI'
-	    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
-	else
-	    echo 'Updating Mac-CLI'
-	    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/update)"
-	fi
-	brew install zsh tmux
+if [[ -z $BREW_CMD ]]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+	test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+	test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+brew install exa
+brew install nvim
+if [ -z ${WSL_DISTRO_NAME+x} ]; then
+       	echo "Not using WSL"
+else
+       	echo "WSL Detected"
+	sudo apt install libfontconfig1 libx11-xcb-dev libxcb-xkb-dev -y
 fi
 
 
