@@ -9,6 +9,7 @@
 
 - shell:
   - [bash scripts/pre-install.sh, Running pre installation script]
+  - [bash scripts/install_brew.sh, Installing Brew]
   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
 
@@ -35,6 +36,9 @@
     ~/.nvim.plugins:
       force: true
       path: nvim.plugins
+    ~/.config/wtf/config.yml:
+      force: true
+      path: wtf
 
 - shell:
   - [sh fonts/install.sh, Installing Powerline fonts]

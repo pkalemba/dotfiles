@@ -36,6 +36,8 @@ function authme() {
   ssh "$1" 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' \
     < ~/.ssh/id_rsa.pub
 }
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.dotfiles/zsh_aliases ] && source ~/.dotfiles/zsh_aliases
 [ -f `which bat` ] && alias cat=bat

@@ -25,18 +25,6 @@
 # 0 is too far from ` ;)
 set -g base-index 1
 
-#retreuve persisted tmux after restart
-#https://github.com/tmux-plugins/tmux-resurrect
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-
-# automaticually saves tmux session every 15mins
-# https://github.com/tmux-plugins/tmux-continuum
-set -g @continuum-restore 'on'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
-
-#allow copy and paste from tmux
-#https://github.com/tmux-plugins/tmux-yank
-set -g @plugin 'tmux-plugins/tmux-yank'
 
 # Automatically set window title
 set-window-option -g automatic-rename on
@@ -104,6 +92,14 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-urlview'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'GROG/tmux-plugin-mem'
+set -g @plugin 'tmux-plugins/tmux-urlview'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '5'
+set -g @resurrect-capture-pane-contents 'on'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 set -g @mem_high_percentage "80"
 set -g @mem_low_percentage "40"
@@ -169,7 +165,7 @@ set-window-option -g window-status-activity-style "none"
 set-window-option -g window-status-style "none"
 set-window-option -g window-status-separator ""
 
-set-option -g status-left "#[fg=colour248, bg=colour241] #S #[fg=colour241, bg=colour237, nobold, noitalics, nounderscore]"
+set-option -g status-left "#[fg=colour248, bg=colour241] #S #[fg=colour241, bg=colour237, nobold, noitalics, nounderscore] C:#{continuum_status}"
 set-option -g status-right "#[fg=colour239, bg=colour237, nobold, nounderscore, noitalics]#[fg=colour246,bg=colour239] Memory:#{mem_percentage} Batt:#{battery_percentage} #{battery_remain} #[fg=colour246,bg=colour239] %Y-%m-%d  %H:%M #[fg=colour248, bg=colour239, nobold, noitalics, nounderscore]#[fg=colour237, bg=colour248] #h "
 
 set-window-option -g window-status-current-format "#[fg=colour239, bg=colour248, :nobold, noitalics, nounderscore]#[fg=colour239, bg=colour214] #I #[fg=colour239, bg=colour214, bold] #W #[fg=colour214, bg=colour237, nobold, noitalics, nounderscore]"

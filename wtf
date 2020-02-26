@@ -1,0 +1,139 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [40, 40]
+    rows: [10, 10, 10, 6,90]
+  refreshInterval: 1
+  mods:
+    clocks_a:
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        Warszawa: "Europe/Warsaw"
+        "San Franciso": "America/Los_Angeles"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+      title: "Clocks"
+      type: "clocks"
+    feedreader:
+      enabled: true
+      feeds:
+        - "" 
+      feedLimit: 10
+      position:
+        top: 0
+        left: 1
+        width: 2
+        height: 1
+      updateInterval: 14400
+    ipinfo:
+      colors:
+        name: "lightblue"
+        value: "white"
+      enabled: true
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 150
+    hackernews:
+      enabled: true
+      numberOfStories: 20
+      position:
+        top: 1
+        left: 1
+        height: 2
+        width: 2
+      storyType: top
+      refreshInterval: 900
+    power:
+      enabled: true
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 15
+      title: "⚡️"
+    exchangerates:
+      enabled: true
+      focusable: false
+      position:
+        top: 3
+        left: 0
+        width: 1
+        height: 1
+      rates:
+        USD:
+          - "PLN"
+        EUR:
+          - "PLN"
+      title: "Rates"
+    resourceusage:
+      cpuCombined: true
+      enabled: true
+      position:
+        top: 4
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 10
+    football:
+      enabled: true
+      apiKey: ""
+      league: "ISA"
+      favTeam: "AC Milan"
+      standingCount: 5
+      matchesFrom: 5
+      matchesTo: 5
+      position:
+        top: 4
+        left: 1
+        height: 4
+        width: 4
+      refreshInterval: 1000
+      title: "⚽"
+    brew_outdated:
+      args: ["outdated"]
+      cmd: "brew"
+      enabled: true
+      position:
+        top: 1
+        left: 3
+        width: 2
+        height: 1
+      type: cmdrunner
+    weather:
+      args: ["wttr.in"]
+      cmd: "curl"
+      enabled: true
+      position:
+        top: 0
+        left: 3
+        width: 2
+        height: 1
+      type: cmdrunner
+    uptime:
+      args: [""]
+      cmd: "uptime"
+      enabled: true
+      position:
+        top: 3
+        left: 1
+        height: 1
+        width: 2
+      refreshInterval: 30
+      type: cmdrunner

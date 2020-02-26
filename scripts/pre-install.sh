@@ -7,24 +7,16 @@ get_latest_release() {
 }
 YUM_CMD=$(which yum)
 APT_GET_CMD=$(which apt)
-BREW_CMD=$(which brew)
 if [[ ! -z $YUM_CMD ]]; then
     sudo yum install zsh tmux curl
 elif [[ ! -z $APT_GET_CMD ]]; then
     sudo apt-get update
-    sudo apt-get install zsh tmux curl wget python3 python3-pip  -y
+    sudo apt-get install zsh curl wget python3 python3-pip  -y
 else
     echo "error can't install package zsh"
     exit 1;
  fi
 
-if [[ -z $BREW_CMD ]]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-	test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-	test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-brew install exa
-brew install nvim
 if [ -z ${WSL_DISTRO_NAME+x} ]; then
        	echo "Not using WSL"
 else
