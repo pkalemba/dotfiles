@@ -5,4 +5,3 @@ if [[ -z $BREW_CMD ]]; then
 	test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 brew install exa bat nvim tmux hub
-brew install wtfutil/wtfutil/wtfutil

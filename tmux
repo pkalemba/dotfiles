@@ -34,7 +34,7 @@ bind -n End send-key C-e
 bind -n Home send-key C-a
 
 
-set -g default-terminal screen-256color
+set -g default-terminal "xterm-256color"
 set -g status-keys vi
 set -g history-limit 10000
 

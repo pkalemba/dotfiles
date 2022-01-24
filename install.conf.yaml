@@ -27,9 +27,6 @@
     ~/.tmux.conf:
       force: true
       path: tmux
-    ~/.config/kitty/kitty.conf:
-      force: true
-      path: kitty
     ~/.config/nvim/init.vim:
       force: true
       path: nvim
@@ -43,7 +40,6 @@
 - shell:
   - [sh fonts/install.sh, Installing Powerline fonts]
   - [git submodule update --init --recursive, Installing submodules]
-  - [sh scripts/kitty.sh launch=n ]
   - ["wget https://github.com/Shougo/deoplete.nvim/tarball/master -O - | tar xz  -C ~/.config/nvim --strip-components=1", Cloning Deoplete]
   - ["curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim","Installing VimPlug"]
   - [pip3 install neovim --user ,Installig neovim Python3 Plugin]
