@@ -1,8 +1,20 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+$HOME/.local/bin/gpg-agent-relay start
+export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+
+plugins=( zsh-completions zsh-syntax-highlighting git python tmux sudo )
+export ZSH_TMUX_FIXTERM=xterm-256color
+export ZSH_TMUX_AUTOSTART=true
 unset GREP_OPTIONS && GREP_OPTIONS="--color=auto"
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_THEME="spaceship"
+#export ZSH_THEME="spaceship"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 source $ZSH/oh-my-zsh.sh
-plugins=(zsh-completions zsh-syntax-highlighting git python)
 export UPDATE_ZSH_DAYS=3
 alias vim=nvim
 alias nano=nvim
@@ -43,3 +55,9 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 [ -f `which bat` ] && alias cat=bat
 [ -f `which exa` ] && alias ls=exa
 [ -z "$TMUX" ] && neofetch
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source $HOME/.cargo/env
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:/home/pkalemba/go/bin:$PATH"
